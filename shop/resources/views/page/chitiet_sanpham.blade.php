@@ -156,7 +156,7 @@
 							top: 16px;
 							transition: none 0s ease 0s;
 							cursor: move;">
-							<a class="pull-left" href="product.html"><img src="source/image/product/{{$new->image}}" alt="" height="100px"></a>
+							<a class="pull-left" href="{{ route('chitietsanpham',$new->id) }}"><img src="source/image/product/{{$new->image}}" alt="" height="100px"></a>
 							<div class="media-body">
 								{{$new->name}}
 								@if($new->promotion_price==0)

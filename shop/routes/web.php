@@ -69,3 +69,8 @@ Route::get('dang-ki', [
 	'as'=>'signin',
 	'uses'=>'PageController@getSignin'
 ]);
+
+Route::post('dang-ki', [
+	'as'=>'signin',
+	'uses'=>'PageController@postSignin'
+]);
