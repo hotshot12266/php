@@ -41,6 +41,12 @@
 					<div class="form-block">
 						<button type="submit" class="btn btn-primary">Login</button>
 					</div>
+					<div class="form-block">
+						<button type="button" class="btn btn-primary"><a href="{{route('provider_login','facebook')}}">Đăng nhập bằng Facebook</a></button>
+					</div>
+					<div class="form-block">
+						<button type="button" class="btn btn-primary">Đăng nhập bằng Email</button>
+					</div>
 				</div>
 				<div class="col-sm-3"></div>
 			</div>

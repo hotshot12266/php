@@ -79,7 +79,23 @@ Route::post('dang-ki', [
 	'as'=>'signin',
 	'uses'=>'PageController@postSignin'
 ]);
+
 Route::get('dang-xuat', [
 	'as'=>'logout',
 	'uses'=>'PageController@postLogout'
+]);
+
+Route::get('search', [
+	'as'=>'search',
+	'uses'=>'PageController@getSearch'
+]);
+
+Route::get('login/{provider}', [
+	'as'=>'provider_login',
+	'uses'=>'PageController@redirectToProvider'
+]);
+
+Route::get('login/{provider}/callback', [
+	'as'=>'provider_login_callback',
+	'uses'=>'PageController@handleProviderCallback'
 ]);
