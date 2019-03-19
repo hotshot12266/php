@@ -11,6 +11,7 @@ use App\Bill;
 use App\BillDetail;
 use App\User;
 use Hash;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -144,5 +145,32 @@ class PageController extends Controller
         $user->address=$req->address;
         $user->save();
         return redirect()->back()->with('thanhcong','Tạo tài khoản thành công');
+    }
+
+    public function postLogin(Request $req){
+        $this->validate($req,[
+            'email'=>'required|email',
+            'password'=>'required|min:6|max:20'
+        ],[
+            'email.required'=>'Vui lòng nhập email',
+            'email.email'=>'Không đúng định dạng email',
+            'password.required'=>'Vui lòng nhập mật khẩu',
+            'password.min'=>'Mật khẩu ít nhất 6 kí tự',
+            'password.max'=>'Mật khẩu không quá 20 kí tự'
+        ]);
+        $credentials=array('email'=>$req->email,'password'=>$req->password);
+        if(Auth::attempt($credentials)){
+            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);    
+        }
+        else{
+
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập thất bại']);
+        }
+
+    }
+
+    public function postLogout(){
+        Auth::logout();
+        return redirect()->route('trang-chu');
     }
 }   

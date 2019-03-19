@@ -65,6 +65,11 @@ Route::get('dang-nhap', [
 	'uses'=>'PageController@getLogin'
 ]);
 
+Route::post('dang-nhap', [
+	'as'=>'login',
+	'uses'=>'PageController@postLogin'
+]);
+
 Route::get('dang-ki', [
 	'as'=>'signin',
 	'uses'=>'PageController@getSignin'
@@ -73,4 +78,8 @@ Route::get('dang-ki', [
 Route::post('dang-ki', [
 	'as'=>'signin',
 	'uses'=>'PageController@postSignin'
+]);
+Route::get('dang-xuat', [
+	'as'=>'logout',
+	'uses'=>'PageController@postLogout'
 ]);
