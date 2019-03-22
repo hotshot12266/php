@@ -95,7 +95,7 @@
 								</div>
 								<div class="single-item-caption">
 									<a class="add-to-cart pull-left" href="{{ route('themgiohang',$sptt->id) }}"><i class="fa fa-shopping-cart"></i></a>
-									<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+									<a class="beta-btn primary" href="{{ route('chitietsanpham',$sptt->id) }}">Chi tiết <i class="fa fa-chevron-right"></i></a>
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -109,45 +109,29 @@
 			</div>
 			<div class="col-sm-3 aside">
 				<div class="widget">
-					<h3 class="widget-title">Best Sellers</h3>
+					<h3 class="widget-title">Sản phẩm khác</h3>
 					<div class="widget-body">
+						@foreach($sp_khac as $new1)
 						<div class="beta-sales beta-lists">
-							
 							<div class="media beta-sales-item">
-								<a class="pull-left" href="product.html"><img src="source/assets/dest/images/products/sales/1.png" alt=""></a>
+								<a class="pull-left" href="{{ route('chitietsanpham',$new1->id) }}"><img src="source/image/product/{{$new1->image}}" alt=""></a>
 								<div class="media-body">
-									Sample Woman Top
-									<span class="beta-sales-price">$34.55</span>
-								</div>
-							</div>
-							
-							<div class="media beta-sales-item">
-								<a class="pull-left" href="product.html"><img src="source/assets/dest/images/products/sales/2.png" alt=""></a>
-								<div class="media-body">
-									Sample Woman Top
-									<span class="beta-sales-price">$34.55</span>
-								</div>
-							</div>
-							<div class="media beta-sales-item">
-								<a class="pull-left" href="product.html"><img src="source/assets/dest/images/products/sales/3.png" alt=""></a>
-								<div class="media-body">
-									Sample Woman Top
-									<span class="beta-sales-price">$34.55</span>
-								</div>
-							</div>
-							<div class="media beta-sales-item">
-								<a class="pull-left" href="product.html"><img src="source/assets/dest/images/products/sales/4.png" alt=""></a>
-								<div class="media-body">
-									Sample Woman Top
-									<span class="beta-sales-price">$34.55</span>
+									{{$new1->name}}
+									@if($new1->promotion_price==0)
+									<span class="flash-sale">{{number_format($new1->unit_price)}} đồng</span>
+									@else
+									<span class="flash-del">{{number_format($new1->unit_price)}} đồng</span>
+									<span class="flash-sale">{{number_format($new1->promotion_price)}} đồng</span>
+									@endif
 								</div>
 							</div>
 						</div>
+						@endforeach
 					</div>
 				</div> <!-- best sellers widget -->
 				<div class="widget">
 					
-					<h3 class="widget-title">New Products</h3>
+					<h3 class="widget-title">Sản phẩm mới</h3>
 					<div class="widget-body">
 						@foreach($new_product as $new)
 						<div class="beta-sales beta-lists">
