@@ -99,3 +99,5 @@ Route::get('login/{provider}/callback', [
 	'as'=>'provider_login_callback',
 	'uses'=>'PageController@handleProviderCallback'
 ]);
+
+Route::post('send','PageController@send');

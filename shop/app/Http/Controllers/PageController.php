@@ -14,7 +14,8 @@ use Hash;
 use Auth;
 use Socialite;
 use App\SocialProvider;
-
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -218,5 +219,20 @@ else{
 }
 Auth()->login($user);
 return redirect()->route('trang-chu')->with(['flash_level'=>'success','flash_message'=>"Đăng nhập thành công"]);
+}
+public function send(Request $req){
+    $this->validate($req,[
+        'name'=>'required',
+        'email'=>'required|email',
+        'message'=>'required'
+    ]);
+
+    $data=array(
+        'name'=>$req->name,
+        'email'=>$req->email,
+        'message'=>$req->message
+    );
+    Mail::to('tailieu2266@gmail.com')->send(new SendMail($data));
+    return back()->with('success','Cảm ơn đã góp ý');
 }
 }   
