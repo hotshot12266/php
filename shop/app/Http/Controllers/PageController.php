@@ -25,12 +25,13 @@ class PageController extends Controller
     	// return view('page.trangchu',['slide'=>$slide]);/// cach 1 chuyen du lieu vao slide 
         $new_product=Product::where('new',1)->paginate(4);
         $sanpham_khuyenmai=Product::where('promotion_price','<>',0)->paginate(8);
+        $loai=ProductType::all();
         // dd($new_product);
-        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai'));
+        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai','loai'));
     }
 
     public function getLoaiSp($type){
-        $sp_theoloai=Product::where('id_type',$type)->get();
+        $sp_theoloai=Product::where('id_type',$type)->paginate(6);
         $sp_khac=Product::where('id_type','<>',$type)->paginate(3);
         $loai=ProductType::all();
         $loap_sp=ProductType::where('id',$type)->first();
@@ -42,15 +43,18 @@ class PageController extends Controller
         $sanpham= Product::where('id',$id)->first();
         $sp_khac=Product::where('id_type','<>',$id)->paginate(3);
         $sp_tuongtu= Product::where('id_type',$sanpham->id_type)->paginate(6);
-        return view('page.chitiet_sanpham',compact('sanpham','sp_tuongtu','new_product','sp_khac'));
+        $loai=ProductType::all();
+        return view('page.chitiet_sanpham',compact('sanpham','sp_tuongtu','new_product','sp_khac','loai'));
     }
 
     public function getLienHe(){
-    	return view('page.lienhe');
+        $loai=ProductType::all();
+    	return view('page.lienhe',compact('loai'));
     }
 
     public function getGioiThieu(){
-    	return view('page.gioithieu');
+        $loai=ProductType::all();
+    	return view('page.gioithieu',compact('loai'));
     }
 
     public function getAddtoCart(Request $req,$id){
@@ -77,13 +81,14 @@ class PageController extends Controller
     }
 
     public function getCheckout(){
+        $loai=ProductType::all();
         if(Session::has('cart')){
             $oldCart=Session::get('cart');
             $cart=new Cart($oldCart);
-            return view('page.dat_hang',['product_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty]);
+            return view('page.dat_hang',['product_cart'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty],compact('loai'));
         }
         else{
-            return view('page.dat_hang');
+            return view('page.dat_hang',compact('loai'));
         }
     }
 
@@ -120,11 +125,13 @@ class PageController extends Controller
     }
 
     public function getLogin(){
-        return view('page.dangnhap');
+        $loai=ProductType::all();
+        return view('page.dangnhap',compact('loai'));
     }
 
     public function getSignin(){
-        return view('page.dangki');
+        $loai=ProductType::all();
+        return view('page.dangki',compact('loai'));
     }
 
     public function postSignin(Request $req){
@@ -180,7 +187,8 @@ class PageController extends Controller
 
     public function getSearch(Request $req){
        $product=Product::where('name','like','%' .$req->key.'%')->orWhere('unit_price',$req->key)->get();
-       return view('page.search',compact('product'));
+       $loai=ProductType::all();
+       return view('page.search',compact('product','loai'));
    }
 
    public function redirectToProvider($providers){

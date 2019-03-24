@@ -7,7 +7,7 @@
 		</div>
 		<div class="pull-right">
 			<div class="beta-breadcrumb">
-				<a href="index.html">Home</a> / <span>Đăng nhập</span>
+				<a href="{{ route('trang-chu') }}">Trang chủ</a> / <span>Đăng nhập</span>
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -31,21 +31,15 @@
 
 					
 					<div class="form-block">
-						<label for="email">Email address*</label>
-						<input type="email" name="email" required>
+						<label for="email">Địa chỉ Email:</label>
+						<input type="email" name="email" placeholder="Nhập từ địa chỉ Email"required>
 					</div>
 					<div class="form-block">
-						<label for="phone">Password*</label>
-						<input type="password" name="password" required>
+						<label for="phone">Mật khẩu:</label>
+						<input type="password" name="password" placeholder="Nhập mật khẩu"required>
 					</div>
 					<div class="form-block">
-						<button type="submit" class="btn btn-primary">Login</button>
-					</div>
-					<div class="form-block">
-						<button type="button" class="btn btn-primary"><a href="{{route('provider_login','facebook')}}">Đăng nhập bằng Facebook</a></button>
-					</div>
-					<div class="form-block">
-						<button type="button" class="btn btn-primary">Đăng nhập bằng Email</button>
+						<button type="submit" class="btn btn-primary">Đăng nhập</button>
 					</div>
 				</div>
 				<div class="col-sm-3"></div>

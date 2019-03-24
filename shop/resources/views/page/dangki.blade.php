@@ -7,7 +7,7 @@
 		</div>
 		<div class="pull-right">
 			<div class="beta-breadcrumb">
-				<a href="index.html">Home</a> / <span>Đăng kí</span>
+				<a href="{{ route('trang-chu') }}">Trang chủ</a> / <span>Đăng kí</span>
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -39,35 +39,35 @@
 
 					
 					<div class="form-block">
-						<label for="email">Email address*</label>
-						<input type="email" name="email" required>
+						<label for="email">Email:</label>
+						<input type="email" name="email"placeholder="Nhập Email" required>
 					</div>
 
 					<div class="form-block">
-						<label for="your_last_name">Fullname*</label>
-						<input type="text" name="fullname" required>
+						<label for="your_last_name">Họ và Tên:</label>
+						<input type="text" name="fullname" required placeholder="Nhập họ và tên">
 					</div>
 
 					<div class="form-block">
-						<label for="adress">Address*</label>
-						<input type="text" name="address" value="Street Address" required>
+						<label for="adress">Địa chỉ:</label>
+						<input type="text" name="address" value="Street Address" placeholder="Nhập địa chỉ" required>
 					</div>
 
 
 					<div class="form-block">
-						<label for="phone">Phone*</label>
-						<input type="text" name="phone" required>
+						<label for="phone">SĐT:</label>
+						<input type="text" name="phone" placeholder="Nhập SĐT" required>
 					</div>
 					<div class="form-block">
-						<label for="phone">Password*</label>
-						<input type="password" name="password" required>
+						<label for="phone">Mật khẩu:</label>
+						<input type="password" name="password" placeholder="Nhập mật khẩu"required>
 					</div>
 					<div class="form-block">
-						<label for="phone">Re password*</label>
-						<input type="password" name="re_password" required>
+						<label for="phone">Lập lại mật khẩu:</label>
+						<input type="password" name="re_password" placeholder="Nhập lại mật khẩu"required>
 					</div>
 					<div class="form-block">
-						<button type="submit" class="btn btn-primary">Register</button>
+						<button type="submit" class="btn btn-primary">Đăng kí</button>
 					</div>
 				</div>
 				<div class="col-sm-3"></div>

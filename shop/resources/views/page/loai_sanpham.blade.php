@@ -64,6 +64,9 @@
 							</div>
 							@endforeach
 						</div>
+						<div class="row">
+							{{$sp_theoloai->links()}}
+						</div>
 					</div> <!-- .beta-products-list -->
 
 					<div class="space50">&nbsp;</div>

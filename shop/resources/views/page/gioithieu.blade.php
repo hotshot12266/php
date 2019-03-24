@@ -20,7 +20,7 @@
 			<div class="space35">&nbsp;</div>
 
 			<div class="history-slider">
-				<div class="history-navigation">
+				<div class="history-navigation" style="margin-left: 170px">
 					<a data-slide-index="0" href="blog_with_2sidebars_type_e.html" class="circle"><span class="auto-center">2015</span></a>
 					<a data-slide-index="1" href="blog_with_2sidebars_type_e.html" class="circle"><span class="auto-center">2016</span></a>
 					<a data-slide-index="2" href="blog_with_2sidebars_type_e.html" class="circle"><span class="auto-center">2017</span></a>
