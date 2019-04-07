@@ -17,22 +17,23 @@ class Cart
 	}
 
 	public function add($item, $id){
-		$giohang = ['qty'=>0, 'price' => $item->unit_or_promotion_price, 'unit_price' => $item->unit_price, 'promotion_price' => $item->promotion_price, 'item' => $item];
+		$price = 0;
+		if($item->promotion_price!=0){
+			$price = $item->promotion_price;
+		}else{
+			$price = $item->unit_price;
+		}
+		$giohang = ['qty'=>0, 'price' => $price, 'item' => $item];
 		if($this->items){
 			if(array_key_exists($id, $this->items)){
 				$giohang = $this->items[$id];
 			}
 		}
 		$giohang['qty']++;
-		if($item->promotion_price == 0) {
-			$item->unit_or_promotion_price = $item->unit_price;
-		} else {
-			$item->unit_or_promotion_price = $item->promotion_price;
-		}
-		$giohang['price'] = $item->unit_or_promotion_price * $giohang['qty'];
+		$giohang['price'] = $price * $giohang['qty'];
 		$this->items[$id] = $giohang;
 		$this->totalQty++;
-		$this->totalPrice += $item->unit_or_promotion_price;
+		$this->totalPrice += $price;
 	}
 	//xóa 1
 	public function reduceByOne($id){

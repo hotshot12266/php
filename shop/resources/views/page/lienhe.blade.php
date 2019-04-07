@@ -56,7 +56,7 @@
 						<textarea name="message" placeholder="Nhập góp ý"></textarea>
 					</div>
 					<div class="form-block">
-						<input type="submit" name="send" value="Gửi Feedback" >
+						<input type="submit" class="btn btn-primary" name="send" value="Gửi Feedback" >
 					</div>
 				</form>
 			</div>

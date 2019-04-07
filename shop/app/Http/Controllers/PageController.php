@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Slide;
 use App\Product;
@@ -23,7 +22,8 @@ class PageController extends Controller
     public function getIndex(){
         $slide=Slide::all();
     	// return view('page.trangchu',['slide'=>$slide]);/// cach 1 chuyen du lieu vao slide 
-        $new_product=Product::where('new',1)->paginate(4);
+        $new_product=Product::where('new',1)->orderBy('id','DESC')->paginate(4);
+        // $new_product=Product::orderBy('id','DESC')->get();
         $sanpham_khuyenmai=Product::where('promotion_price','<>',0)->paginate(8);
         $loai=ProductType::all();
         // dd($new_product);
